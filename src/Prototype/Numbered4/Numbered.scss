@@ -1,0 +1,39 @@
+.numbered {
+  background: linear-gradient(to right, transparent 0, red 100%);
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+}
+
+.numbered__numbers {
+  width: 24px; // Needs specific width/margin/etc
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  
+  
+  flex-shrink: 0;
+}
+
+.numbered__number {
+  display: flex;
+  align-items: center;
+
+  counter-increment: line;
+
+  color: white;
+  background: blue;
+
+  // &::before{
+  //   content: counter(line);
+  // }
+
+}
+
+.numbered__content {
+  flex-grow: 1; // very important!
+}
+

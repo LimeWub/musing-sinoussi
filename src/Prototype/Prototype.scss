@@ -1,0 +1,12 @@
+.prototype {
+  display: flex;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.prototype_col {
+  width: 50%;
+  flex-shrink: 0;
+}

@@ -1,0 +1,32 @@
+.numbered {
+  padding-left: 1.5em;
+  background: linear-gradient(to right, transparent 0, red 100%);
+  width: 100%;
+
+  * {
+    margin: 0;
+  }
+
+  .numbered_line {
+    display: block;
+    counter-increment: line;
+    position: relative;
+    min-height: 1.2em; // line height
+
+    &::before {
+      content: counter(line) " ";
+      font-weight: normal;
+      width: 2em;
+      height: 100%;
+      transform: translateX(-100%);
+      font-size: 0.6em;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

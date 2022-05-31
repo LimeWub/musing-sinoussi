@@ -1,0 +1,33 @@
+.numbered {
+  padding-left: 2em;
+  background: linear-gradient(to right, transparent 0, red 100%);
+  width: 100%;
+  position: relative;
+}
+
+.numbered__numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+}
+
+.numbered__number {
+  display: flex;
+  align-items: flex-end;
+}
+  
+.numbered__children {
+  * {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  & > * + * {
+     margin-top: 1.2em; // This only affects block level elements so no need to worry about specifics
+  }
+}

@@ -1,0 +1,24 @@
+@use "@material/typography/mdc-typography";
+
+blockquote {
+  position: relative;
+  margin: 0;
+  padding: 8px 0;
+  padding-left: 24px;
+  font-style: italic;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background: gainsboro;
+  }
+}
+
+
+// -----
+
+body, html { margin: 0; padding: 0;}
