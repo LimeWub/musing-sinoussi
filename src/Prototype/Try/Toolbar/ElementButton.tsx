@@ -1,8 +1,8 @@
 import { useSlate } from "slate-react";
-import { isElementActive } from "../slate-utility/element/isElementActive";
-import { toggleElement } from "../slate-utility/element/toggleElement";
+import { isElementActive } from "../../slate-utility/element/isElementActive";
+import { toggleElement } from "../../slate-utility/element/toggleElement";
 import { Button, Icon } from "./base-components";
-import { TEXT_ALIGN } from "../slate-utility/constants/text-align";
+import { TEXT_ALIGN } from "../../slate-utility/constants/text-align";
 
 export const ElementButton = ({ format, icon }) => {
   const editor = useSlate();

@@ -1,7 +1,9 @@
+# Numbered3
+
 Third attempt at a component that does line numbering.
 Expands on second attempt.
 
-How does it work?
+## How does it work?
 
 > Same as Second attempt but....
 > Does NOT number empty lines
@@ -9,7 +11,7 @@ How does it work?
 > Loops through elements to calculate if an additional empty line should be added to cover for the margin between element
 > Depends on 'lines' logic in 'Output/ComprehensionOutput' These could potentially be combined but haven't figured it out yet
 
-Outputs something like:
+## Outputs something like:
 
 ```html
 <div explanation="flexDirection: row">
@@ -34,10 +36,10 @@ Outputs something like:
 </div>
 ```
 
-Why this is not the way to go?
+## Why this is not the way to go?
 
-> Insanely convoluted and needs to have too many things passed to it.
+> Insanely convoluted and needs to have too many things passed to it. Dependency on parent <Output /> to do 'lines' array.
 > Does not take into account padded elements
 > As all elements are wrapped in one component it's too difficult to split them out to only have SOME\* components numbered rather than all of them. This is problematic for things like the newspaper layout where only some areas expect numbers.
-> As it depends on an assumed font aspect ratio is flimsy and can miscalculate line-breaks and font-sizes on edge cases.
+> As it depends on an assumed font aspect ratio is flimsy and can miscalculate line-breaks and font-sizes on edge cases. Doesn't allow for font variations.
 > Minor: All elements have the same font-size

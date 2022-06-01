@@ -1,77 +1,48 @@
 import React from "react";
-import { useSlate } from "slate-react";
-import { Element } from "../Output/OutputElement";
+// import { useSlate } from "slate-react";
+import { Element } from "../Newspaper/NewspaperElement";
 import { Leaf } from "../Output/OutputLeaf";
 import { Numbered } from "../Numbered4/Numbered";
+import { NumberedProvider as Numbered4Provider } from "../Numbered4/NumberedProvider";
 
-const NUMBERS_EVERY_X_LINES = 1;
-const CHARS_PER_LINE = 60;
+const doNotNumberElementsWithType = [
+  "newspaper_title",
+  "newspaper_subtitle",
+  "li"
+];
 
-export const Output = ({ className, ...rest }) => {
-  const { children: slateJson } = useSlate();
+export const Output = ({ className, slateJson, ...rest }) => {
+  const renderElement = ({ children, ...elementData }, ei) => {
+    const { type } = elementData;
 
-  const { renderedElements, lines } = React.useMemo(() => {
-    const lines = [];
-
-    const renderElement = ({ children, ...elementData }, ei) => {
-      let elementText = "";
-      const renderedChildren = children.map((child, i) => {
-        const key = `${ei}_${i}`;
-        if (child?.children) {
-          // Nested Element (ie. li)
-          return renderElement(child, key);
-        } else {
-          // Leaf
-          const { text, ...leafData } = child;
-          elementText += text;
-          return <Leaf key={key} leaf={leafData} children={text} />;
-        }
-      });
-
-      const splitCopy = (copy) => {
-        if (!copy) return;
-        // This splits text from !. etc
-        const match = `[\\b\\s]?.{${CHARS_PER_LINE},}?(?=\\s)|.+$`;
-        const regex = new RegExp(match, "gm");
-        return copy.replace(/\s+/g, " ").trim().match(regex);
-      };
-
-      const elementLines = splitCopy(elementText);
-      console.log({ elementText, elementLines });
-      const isList = ["bulleted-list", "numbered-list"].includes(
-        elementData?.type
-      );
-      const isListItem = ["list-item"].includes(elementData?.type);
-
-      if (elementLines || isListItem) {
-        lines.push(...Array(elementLines?.length || 1).fill(true));
+    const renderedChildren = children.map((child, i) => {
+      const key = `${ei}_${i}`;
+      if (child?.children) {
+        // Nested Element (ie. li)
+        return renderElement(child, key);
+      } else {
+        // Leaf
+        const { text, ...leafData } = child;
+        return <Leaf key={key} leaf={leafData} children={text} />;
       }
-      if (elementLines?.length && !isListItem) {
-        lines.push(false);
-      }
-      if (isList) lines.push(false);
-      console.log({ elementData });
+    });
 
-      return (
-        <Element key={ei} element={elementData}>
-          {renderedChildren}
-        </Element>
-      );
-    };
-
-    const renderedElements = slateJson.map(renderElement);
-    return { renderedElements, lines };
-  }, [slateJson]);
+    let renderedElement = (
+      <Element key={ei} element={elementData}>
+        {renderedChildren}
+      </Element>
+    );
+    console.log({ renderedElement });
+    // @BUG! Numbered is bugged rn w infinite loop for renderedElement! Skip this until fixed!
+    if (false || !doNotNumberElementsWithType.includes(type)) {
+      renderedElement = <Numbered key={ei}>{renderedElement}</Numbered>;
+    }
+    return renderedElement;
+  };
 
   return (
-    <Numbered
-      className={`comprehension ${className}`}
-      lines={lines}
-      step={NUMBERS_EVERY_X_LINES}
-      charsPerLine={CHARS_PER_LINE}
-      {...rest}
-    >
-      {renderedElements}
-    </Numbered>
+    <Numbered4Provider step={2}>
+      {slateJson.map(renderElement)}
+    </Numbered4Provider>
   );
 };

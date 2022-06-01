@@ -1,5 +1,5 @@
 import React from "react";
-import "./ComprehensionOutput.scss";
+import "./Output.scss";
 import { useSlate } from "slate-react";
 import { Element } from "./OutputElement";
 import { Leaf } from "./OutputLeaf";
@@ -8,7 +8,7 @@ import { Numbered } from "../Numbered3/Numbered";
 const NUMBERS_EVERY_X_LINES = 1;
 const CHARS_PER_LINE = 60;
 
-export const ComprehensionOutput = ({ className, ...rest }) => {
+export const Output = ({ className, ...rest }) => {
   const { children: slateJson } = useSlate();
 
   const { renderedElements, lines } = React.useMemo(() => {
@@ -50,7 +50,7 @@ export const ComprehensionOutput = ({ className, ...rest }) => {
         lines.push(false);
       }
       if (isList) lines.push(false);
-      console.log({ elementData });
+      // console.log({ elementData });
 
       return (
         <Element key={ei} element={elementData}>

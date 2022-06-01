@@ -1,6 +1,6 @@
 import { useSlate } from "slate-react";
-import { isMarkActive } from "../slate-utility/mark/isMarkActive";
-import { toggleMark } from "../slate-utility/mark/toggleMark";
+import { isMarkActive } from "../../slate-utility/mark/isMarkActive";
+import { toggleMark } from "../../slate-utility/mark/toggleMark";
 import { Button, Icon } from "./base-components";
 
 export const MarkButton = ({ format, icon }) => {

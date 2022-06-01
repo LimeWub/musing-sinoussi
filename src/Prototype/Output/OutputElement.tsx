@@ -1,3 +1,4 @@
+// import * as React from "react";
 import {
   QUOTE as eQUOTE,
   LIST as eLIST,
@@ -12,9 +13,7 @@ const elements = {
   ...eHEADING
 };
 
-export const Element = (props) => {
-  return getElementFunction(elements).render(props);
-};
+export const Element = (props) => getElementFunction(elements).render(props);
 
 // export const OutputElement = ({ attributes, children, element }) => {
 //   switch (element.type) {

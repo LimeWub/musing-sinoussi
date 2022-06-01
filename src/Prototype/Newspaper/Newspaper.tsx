@@ -3,10 +3,10 @@ import { Slate, Editable, withReact } from "slate-react";
 import { createEditor } from "slate";
 import { withHistory } from "slate-history";
 import { withForcedLayout } from "../slate-utility/editor/withForcedLayout";
-import { NewspaperElement } from "./NewspaperElement";
+import { Element as NewspaperElement } from "./NewspaperElement";
 import { initialValue } from "./initialValue";
 
-export const ComprehensionNewspaper = () => {
+export const Newspaper = () => {
   const renderElement = useCallback(
     (props) => <NewspaperElement {...props} />,
     []

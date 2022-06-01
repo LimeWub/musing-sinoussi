@@ -1,15 +1,16 @@
 import React from "react";
 import "./Prototype.scss";
-import { Try } from "./Try/Try";
-// import { ComprehensionNewspaper } from "./Newspaper/ComprehensionNewspaper";
-import { Numbered as Numbered4 } from "./Numbered4/Numbered";
-import { NumberedProvider as Numbered4Provider } from "./Numbered4/NumberedProvider";
+// import { Newspaper } from "./Newspaper/Newspaper";
+// import { Try } from "./Try/Try";
+import { Output } from "./Output2/Output";
+import { finalValue } from "./Output2/finalValue";
 export const Prototype = () => {
   return (
     <>
       {/* <Try /> */}
-
-      <Numbered4Provider step={2}>
+      {/* <Newspaper /> */}
+      {/* <Output slateJson={finalValue} /> */}
+      {/* <Numbered4Provider step={2}>
         <Numbered4>
           <h1>
             This is editable rich text, much better than a textarea! Since it's
@@ -46,7 +47,6 @@ export const Prototype = () => {
             blockquoteHi I'm a blockquoteHi I'm a blockquoteHi I'm a blockquote
           </blockquote>
         </Numbered4>
-        {/*
         <Numbered4>
           <p>
             This is editable rich text, much better than a textarea! Since it's
@@ -63,8 +63,9 @@ export const Prototype = () => {
             add a semantically rendered block quote in the middle of the page,
             like this: A wise quote.
           </p>
-        </Numbered4> */}
+        </Numbered4> 
       </Numbered4Provider>
+       */}
       {/* <ComprehensionNewspaper /> */}
     </>
   );

@@ -1,8 +1,10 @@
+# Numbered1
+
 First attempt at a component that does line numbering.
 
 How does it work?
 
-> Expects text rather than children
+> Expects text prop rather than children
 > Forces text fontSize/lineHeight based on character count
 > Splits text based on character count (keeps full words)
 > Wraps spans around split text
@@ -25,3 +27,5 @@ Why this is not the way to go?
 
 > Expecting simple text is very inflexible, doesn't work for bold/italics (and other marks), doesn't work with any other nested elements like lists
 > Hasn't been tested with elements of variable padding but assuming it would have bad results as it wouldn't take padding into account
+> Does line numbers on every 'text' line. Can't skip numbers (every 5?).
+> Doesn't allow for font variations. Potentially counts chars per line wrong or leaves empty spaces on the right.

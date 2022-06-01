@@ -2,7 +2,6 @@ import React from "react";
 import "./Numbered.scss";
 import { debounce } from "../../utility";
 import { useNumbered } from "./NumberedProvider";
-// import { Number } from "./Number";
 
 const lineHeight = 1.2; // That's what u're getting sry! Too much of a deal to calculate it!
 // const iWidth = 600;
@@ -12,7 +11,10 @@ export const Numbered = React.memo(({ className, children, ...rest }) => {
 
   const [el, setEl] = React.useState();
   const setElRef = React.useCallback((node) => {
-    if (node) setEl(node);
+    if (node) {
+      setEl(node);
+      console.log({ node });
+    }
   }, []);
 
   const hasSetInitialCSS = React.useRef(false);
@@ -21,11 +23,11 @@ export const Numbered = React.memo(({ className, children, ...rest }) => {
 
   const [currentCSS, setCurrentCSS] = React.useState({});
   const { width: cWidth } = currentCSS;
-  // console.log({ initialCSS, currentCSS });
+  console.log({ initialCSS, currentCSS });
 
   const { cFontSize, cLineHeight } = React.useMemo(() => {
     if (!hasSetInitialCSS.current) {
-      console.log("early return");
+      // console.log("early return");
       return {};
     }
     const cFontSize = (iFontSize / iWidth) * cWidth;

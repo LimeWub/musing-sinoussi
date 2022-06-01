@@ -1,6 +1,8 @@
+# Numbered2
+
 Second attempt at a component that does line numbering.
 
-How does it work?
+## How does it work?
 
 > Expects children (as you'd hope)
 > Doesn't try to split any spans, works with nested children
@@ -10,7 +12,7 @@ How does it work?
 > Forces NO vertical paddings
 > Does step every X lines (Currently hardcoded 5)
 
-Outputs something like:
+## Outputs something like:
 
 ```html
 <div explanation="flexDirection: row">
@@ -36,8 +38,9 @@ Outputs something like:
 </div>
 ```
 
-Why this is not the way to go?
+## Why this is not the way to go?
 
-> Numbers empty lines
+> Numbers empty lines (deal breaker)
 > Minor: All elements have the same font-size
 > Hasn't been tested with elements of variable padding but assuming it would have bad results as it wouldn't take padding into account
+> Doesn't allow for font variations. Potentially counts chars per line wrong or leaves empty spaces on the right.

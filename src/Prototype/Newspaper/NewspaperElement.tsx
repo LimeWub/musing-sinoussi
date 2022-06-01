@@ -11,6 +11,7 @@ import { NewspaperSubtitle } from "./components/NewspaperSubtitle";
 import { NewspaperArticleTitle } from "./components/NewspaperArticleTitle";
 import { NewspaperArticleSubtitle } from "./components/NewspaperArticleSubtitle";
 import { NewspaperArticleAuthor } from "./components/NewspaperArticleAuthor";
+import { forwardRef } from "react";
 
 const NEWSPAPER = {
   newspaper_title: NewspaperTitle,
@@ -27,6 +28,8 @@ const elements = {
   ...NEWSPAPER
 };
 
-export const NewspaperElement = (props) => {
-  return getElementFunction(elements).render(props);
-};
+// (!) The below refactor is an attempt to get ref forwarding to work. Alas
+export const Element = forwardRef((props, ref) => {
+  const Component = getElementFunction(elements);
+  return <Component {...props} ref={ref} />;
+});
